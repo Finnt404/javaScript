@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title> Greet the user </title>
+    </head>
+    <body> 
+        <h2>Welcome</h2>
+        <button onclick="fun()"> Click ME!</button>
+        <p id="g"></p> 
+    </body>
+
+    <script type="text/javascript">
+    function fun() {
+        let username = prompt("What is your name?",'type your name');
+        if ((username!= null)&&(username=='Alice')||(username=='Bob')){
+           document.getElementById("g").innerText='Hii '+username+' ,how are you today!?';
+            }
+        else if (username!= null){
+            document.getElementById("g").innerText='Type a valid name to greet';
+       
+        }
+    }
+    </script>
+</html>

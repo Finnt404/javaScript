@@ -1,0 +1,86 @@
+<!DOCTYPE HTML> 
+<html> 
+
+<head> 
+	<title> 
+		Bouncing Ball!! 
+	</title> 
+	<style> 
+		h1 { 
+			color: green; 
+		} 
+		
+		canvas { 
+			background-color:blueviolet; 
+			width: 600px; 
+			height: 400px; 
+			position: absolute; 
+			top: 20%; 
+			left: 27%; 
+		} 
+	</style> 
+
+</head> 
+
+<body> 
+	<center> 
+		<h1>Finnt Wick</h1> 
+		<h3>Bouncing ball</h3> 
+		<canvas> 
+		</canvas> 
+		<script> 
+			var canvas = document.querySelector("canvas"); 
+
+			canvas.width = window.innerWidth; //624
+			canvas.height = window.innerHeight; //625
+
+			var l = canvas.getContext('2d');
+
+			var x = Math.floor(Math.random() * innerWidth);  // x and y are the co-ordinates of the circle 
+			var y = Math.floor(Math.random() * innerHeight); 
+			var vx = Math.floor(Math.random() * 2); // vx and vy are the respective speeds 
+			var vy = Math.floor(Math.random() * 4); 
+			var radius = 40; 
+
+			move(); 
+			
+			// This function will do the animation 
+			function move() { 
+				requestAnimationFrame(move); 
+
+				// It clears the specified pixels within 
+				// the given rectangle 
+                l.clearRect(0, 0, innerWidth, innerHeight); 
+                console.log(l);
+
+				// Creating a circle 
+				l.beginPath(); 
+				l.strokeStyle = "black"; 
+				l.arc(x, y, radius, 0, Math.PI * 2, false); 
+                l.stroke(); 
+                
+                
+
+				// Conditions sso that the ball bounces 
+				// from the edges 
+				if (radius + x > innerWidth) 
+					vx = 0 - vx; 
+
+				if (x - radius < 0) 
+					vx = 0 - vx; 
+
+				if (y + radius > innerHeight) 
+					vy = 0 - vy; 
+
+				if (y - radius < 0) 
+					vy = 0 - vy; 
+
+				x = x + vx; 
+				y = y + vy; 
+
+			} 
+		</script> 
+	</center> 
+</body> 
+
+</html> 

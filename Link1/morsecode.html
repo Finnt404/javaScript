@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title> conversion </title>
+    </head>
+    <body>
+        Enter text you want to convert <input type="text" id="gettext">
+        <button onclick="convert()">Convert</button>
+        <p>Text in Morse Code: </p>
+        <p id="newText"></p><pre>
+
+
+
+        </pre>
+       <!-- Enter Morsecode that you want to convert in english <input type="morsetext" id="getMorse">!-->
+        <!--<button onclick="messageConvert()">Convert</button>!-->
+        <p>Text in English: </p>
+        <p id="MorseText"></p>
+    </body>
+</html>
+<script>
+    function convert(){
+        var letters = [ ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' ];
+        var morseLetters = [ "\xa0\xa0\xa0\xa0", ". ___", "___ . . .", "___ . ___ .", "___ . .", ".", ". . ___ .", "___ ___ .", ". . . .", ". .", ". ___ ___ ___", "___ . ___", ". ___ . .",  "___ ___", "___ .", "___ ___ ___", ". ___ ___ .", "___ ___ . ___", ". ___ .", ". . .", "_", ". . ___", ". . . ___", ". ___ ___", "___ . . ___", "___ . ___ ___", "___ ___ . .", ". ___ ___ ___ ___", ". . ___ ___ ___", ". . . ___ ___", ". . . . ___", ". . . . .", "___ . . . .", "___ ___ . . .", "___ ___ ___ . .", "___ ___ ___ ___ .", "___ ___ ___ ___ ___" ];
+        let newText='';
+        let text=document.getElementById("gettext").value;
+        for(let i=0;i<text.length;i++){
+            for(let j=0;j<37;j++){
+                if(text[i].toLowerCase()==letters[j]){
+                    newText+=morseLetters[j];
+                    newText+= "\xa0\xa0\xa0\xa0";
+                    break;
+                }
+            }
+        }
+        document.getElementById("newText").innerHTML=newText;
+    }
+  
+    var message = "---    -.-   "; 
+   //let txt=document.getElementById("getMorse").value;
+   //let message=document.getElementById("newText").value;
+   
+   var alphabet = {  
+   "-----":"0",
+   ".----":"1",
+   "..---":"2",
+   "...--":"3",
+   "....-":"4",
+   ".....":"5",
+   "-....":"6",
+   "--...":"7",
+   "---..":"8",
+   "----.":"9",
+   ".-":"a",
+   "-...":"b",
+   "-.-.":"c",
+   "-..":"d",
+   ".":"e",
+   "..-.":"f",
+   "--.":"g",
+   "....":"h",
+   "..":"i",
+   ".---":"j",
+   "-.-":"k",
+   ".-..":"l",
+   "--":"m",
+   "-.":"n",
+   "---":"o",
+   ".--.":"p",
+   "--.-":"q",
+   ".-.":"r",
+   "...":"s",
+   "-":"t",
+   "..-":"u",
+   "...-":"v",
+   ".--":"w",
+   "-..-":"x",
+   "-.--":"y",
+   "--..":"z",
+   "/":" ",
+   "-.-.--":"!",
+   ".-.-.-":".",
+   "--..--":","
+};
+var messageConverted = [];
+
+message.split("   ").map(function (word) {
+    word.split(" ").map(function (letter) {
+        messageConverted.push(alphabet[letter]);
+    });
+    messageConverted.push(" ");
+});
+document.getElementById("MorseText").innerHTML=messageConverted.join("");
+
+ 
+
+</script>
+</html>
